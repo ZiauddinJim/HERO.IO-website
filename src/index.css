@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+.gradient {
+    @apply bg-gradient-to-br from-[#632ee3] to-[#9f62f2];
+}
+
+.gray {
+    @apply text-[#627382]
+}
