@@ -38,7 +38,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end">
-                        <a href='https://github.com/ziauddinJim/' className="btn gradient text-white"><IoLogoGithub /> Contribute</a>
+                        <a target='_blank' href='https://github.com/ziauddinJim/' className="btn gradient text-white"><IoLogoGithub /> Contribute</a>
                     </div>
                 </div>
             </Container>
