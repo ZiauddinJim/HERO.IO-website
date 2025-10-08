@@ -12,7 +12,7 @@ const Footer = () => {
     const links = navbarData.map(route => <Link key={route.id} to={route.path}><li className='font-normal'>{route.name}</li></Link>)
 
     return (
-        <div className='bg-[#001931]'>
+        <div className='bg-[#001931] pt-5'>
             <Container>
                 <div className="rounded p-5 text-white">
                     <div className='flex flex-col-reverse justify-between items-center'>

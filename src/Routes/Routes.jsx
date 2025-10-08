@@ -3,6 +3,7 @@ import mainLayouts from "../Layouts/mainLayouts";
 import Apps from "../Pages/Apps";
 import Installation from "../Pages/Installation";
 import Home from "../Pages/Home";
+import AppDetails from "../Pages/AppDetails";
 
 
 const Routes = createBrowserRouter([
@@ -23,7 +24,11 @@ const Routes = createBrowserRouter([
             {
                 path: 'installation',
                 Component: Installation,
-            }
+            },
+            {
+                path: 'apps/:id',
+                Component: AppDetails,
+            },
         ],
     }
 ]);
