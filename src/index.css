@@ -13,3 +13,7 @@ body {
 .gray {
     @apply text-[#627382]
 }
+
+.bg-green {
+    @apply bg-[#00D390]
+}

@@ -4,6 +4,7 @@ import downloadIcon from "./icon-downloads.png";
 import appError from "./App-Error.png";
 import error404 from "./error-404.png";
 import ratingIcon from "./icon-ratings.png";
+import reviewIcon from "./icon-review.png";
 
 const assets = {
   logo,
@@ -12,5 +13,6 @@ const assets = {
   appError,
   error404,
   ratingIcon,
+  reviewIcon,
 };
 export default assets;
