@@ -5,7 +5,7 @@ import Container from '../Components/Container';
 import useApps from '../Hooks/useApps';
 
 const Home = () => {
-    const { apps } = useApps()
+    const { apps, } = useApps()
     const homeApps = apps.slice(0, 8)
     return (
         <div>

@@ -6,7 +6,7 @@ const Charts = ({ ratings }) => {
 
 
     return (
-        <div className='mt-10 mb-5'>
+        <div className='mt-10 mb-5 mx-3 lg:mx-auto'>
             <p className='text-2xl font-semibold'>Ratings</p>
             <div>
                 <ResponsiveContainer width="100%" height={250}>

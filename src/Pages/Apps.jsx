@@ -19,7 +19,7 @@ const Apps = () => {
                 <h1 className="font-bold text-3xl lg:text-5xl mt-20">Our All Applications</h1>
                 <p className="gray mt-5 mb-10">Explore All Apps on the Market developed by us. We code for Millions</p>
                 <div className="flex justify-between mb-8">
-                    <p className="font-semibold text-2xl">({searchApps.length}) Apps Found</p>
+                    <p className="font-semibold md:text-xl lg:text-2xl">({searchApps.length}) Apps Found</p>
                     <label className="input">
                         <Search className="h-4 gray" />
                         <input onChange={(e) => setSearch(e.target.value)}

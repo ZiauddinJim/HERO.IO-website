@@ -11,7 +11,7 @@ const Navbar = () => {
         { id: 2, path: '/apps', name: 'Apps' },
         { id: 3, path: '/installation', name: 'Installation' }
     ]
-    const links = navbarData.map(route => <NavLink key={route.id} to={route.path}><li className='btn btn-ghost font-normal'>{route.name}</li></NavLink>)
+    const links = navbarData.map(route => <li key={route.id}><NavLink to={route.path} className={({ isActive }) => `btn btn-ghost font-normal ${isActive && 'gradient bg-clip-text text-transparent'}`}>{route.name}</NavLink></li>)
     return (
         <div className='shadow-sm'>
             <Container>

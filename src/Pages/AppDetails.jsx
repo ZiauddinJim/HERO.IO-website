@@ -4,23 +4,39 @@ import Container from "../Components/Container";
 import assets from "../assets/assets";
 import { formatter } from "../Util/Util";
 import Charts from "../Components/Charts";
+import Spinner from "../Components/Spinner";
+import AppError from "./AppError";
 
 
 const AppDetails = () => {
     const { id } = useParams()
-    const { apps } = useApps()
-    const appDetails = apps.find(app => app.id === Number(id)) || {}
-    const { image, title, companyName, downloads, ratingAvg, reviews, size, ratings, description } = appDetails
-
+    const { apps, loading } = useApps()
+    const appDetails = apps.find(app => app.id === Number(id))
+    if (loading) return <Spinner />
+    if (!appDetails) { return <AppError /> }
+    const { image, title, companyName, downloads, ratingAvg, reviews, size, ratings, description, } = appDetails
     const dataDetails = [
         { id: 1, image: assets.downloadIcon, digit: formatter.format(downloads) },
         { id: 2, image: assets.ratingIcon, digit: ratingAvg },
         { id: 3, image: assets.reviewIcon, digit: formatter.format(reviews) },
     ]
+
+    const handleInstall = () => {
+        const exitingData = JSON.parse(localStorage.getItem('install'))
+        let updateData = []
+        if (exitingData) {
+            const isDuplicate = exitingData.some(s => s.id === appDetails.id)
+            if (isDuplicate) return alert('Not')
+            updateData = [...exitingData, appDetails]
+        } else {
+            updateData.push(appDetails)
+        }
+        localStorage.setItem('install', JSON.stringify(updateData))
+    }
     return (
         <Container>
             <div className="my-20">
-                <div className="flex flex-col lg:flex-row gap-10 mx-3 lg:mx-auto items-center  border-b-2 border-gray-300 pb-10">
+                <div className="flex flex-col md:flex-row gap-10 mx-3 lg:mx-auto items-center  border-b-2 border-gray-300 pb-10">
                     <figure className="">
                         <img src={image} alt={title} className="rounded-2xl h-52 w-52 lg:h-72 lg:w-72 shadow-2xl" />
                     </figure>
@@ -37,11 +53,11 @@ const AppDetails = () => {
                                 )
                             })}
                         </div>
-                        <div className="btn mt-5 bg-green animate-pulse text-white">Install Now ({size} MB)</div>
+                        <div onClick={handleInstall} className="btn mt-5 bg-green animate-pulse text-white">Install Now ({size} MB)</div>
                     </div>
                 </div>
                 <Charts ratings={ratings} />
-                <div className="mt-5 mb-16 border-t-2 border-gray-300">
+                <div className="mt-5 mb-16 border-t-2 border-gray-300 mx-3 lg:mx-auto">
                     <p className='text-2xl font-semibold my-5'>Description</p>
                     <p className="gray">{description}</p>
                 </div>
