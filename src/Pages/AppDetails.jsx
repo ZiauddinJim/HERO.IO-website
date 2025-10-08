@@ -6,11 +6,13 @@ import { formatter } from "../Util/Util";
 import Charts from "../Components/Charts";
 import Spinner from "../Components/Spinner";
 import AppError from "./AppError";
+import { useState } from "react";
 
 
 const AppDetails = () => {
     const { id } = useParams()
     const { apps, loading } = useApps()
+    const [isClick, setIsClick] = useState(false)
     const appDetails = apps.find(app => app.id === Number(id))
     if (loading) return <Spinner />
     if (!appDetails) { return <AppError /> }
@@ -32,6 +34,7 @@ const AppDetails = () => {
             updateData.push(appDetails)
         }
         localStorage.setItem('install', JSON.stringify(updateData))
+        setIsClick(true)
     }
     return (
         <Container>
@@ -53,7 +56,10 @@ const AppDetails = () => {
                                 )
                             })}
                         </div>
-                        <div onClick={handleInstall} className="btn mt-5 bg-green animate-pulse text-white">Install Now ({size} MB)</div>
+                        <div onClick={handleInstall}
+                            className={`btn mt-5 bg-green text-white ${isClick ? '' : 'animate-pulse'}`}>
+                            {isClick ? 'Installed' : `Install Now (${size} MB)`}
+                        </div>
                     </div>
                 </div>
                 <Charts ratings={ratings} />
