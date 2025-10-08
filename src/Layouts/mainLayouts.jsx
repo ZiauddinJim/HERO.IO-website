@@ -10,9 +10,7 @@ const mainLayouts = () => {
                 <Navbar />
             </header>
             <main className='flex-1 bg-slate-50'>
-                <Container>
-                    <Outlet />
-                </Container>
+                <Outlet />
             </main>
             <footer>
                 <Footer />

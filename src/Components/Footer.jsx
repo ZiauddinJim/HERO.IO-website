@@ -25,7 +25,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="border-t-1 pt-5 border-gray-600 text-center">
-                        <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+                        <p className='text-slate-400 text-[16px]'>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
                     </div>
                 </div>
             </Container>
