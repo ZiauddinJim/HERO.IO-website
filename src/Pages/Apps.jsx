@@ -3,7 +3,7 @@ import AppsCard from "../Components/AppsCard";
 import Container from "../Components/Container";
 import useApps from "../Hooks/useApps";
 import { useState } from "react";
-import AppError from "./AppError";
+import ErrorSearch from "./ErrorSearch";
 
 const Apps = () => {
     const { apps } = useApps()
@@ -32,7 +32,7 @@ const Apps = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-3 lg:mx-auto">
                     {
                         (searchApps.length) ? searchApps.map(app => <AppsCard key={app.id} app={app} />)
-                            : <AppError />
+                            : <ErrorSearch />
                     }
                 </div>
             </div>
