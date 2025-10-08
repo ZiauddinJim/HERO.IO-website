@@ -6,7 +6,7 @@ const AppsCard = ({ app }) => {
     const { image, title, downloads, ratingAvg, id } = app
     return (
         <Link to={`/apps/${id}`}>
-            <div className="card bg-base-100 shadow-sm overflow-hidden">
+            <div className="card bg-base-100 shadow-sm overflow-hidden hover:scale-102 transition hover:shadow-xl">
                 <figure className="px-4 pt-4">
                     <img
                         src={image}
