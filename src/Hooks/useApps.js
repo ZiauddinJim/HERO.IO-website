@@ -18,7 +18,7 @@ const useApps = () => {
         }, 1000);
       });
   }, []);
-  return { apps, loading, error };
+  return { apps, loading, setLoading, error };
 };
 
 export default useApps;

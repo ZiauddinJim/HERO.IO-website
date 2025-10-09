@@ -17,7 +17,7 @@ const Navbar = () => {
     return (
         <div className='shadow-sm'>
             <Container>
-                <div className="navbar p-0 mr-3 lg:mx-auto">
+                <div className="navbar p-0">
                     <div className="navbar-start">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -39,7 +39,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <div className="navbar-end">
+                    <div className="navbar-end mr-3 lg:mr-auto">
                         <a target='_blank' href='https://github.com/ziauddinJim/' className="btn gradient text-white"><IoLogoGithub /> Contribute</a>
                     </div>
                 </div>
