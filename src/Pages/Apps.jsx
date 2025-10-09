@@ -21,7 +21,7 @@ const Apps = () => {
 
     return (
         <Container>
-            <div className="text-center">
+            <div className="text-center mb-20">
                 <h1 className="font-bold text-3xl lg:text-5xl mt-20">Our All Applications</h1>
                 <p className="gray mt-5 mb-10">Explore All Apps on the Market developed by us. We code for Millions</p>
                 <div className="flex justify-between mb-8">
