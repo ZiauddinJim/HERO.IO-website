@@ -25,21 +25,19 @@ const AppDetails = () => {
     ]
 
     const handleInstall = () => {
-
         const exitingData = JSON.parse(localStorage.getItem('install'))
         let updateData = []
         if (exitingData) {
             const isDuplicate = exitingData.some(s => s.id === appDetails.id)
             if (isDuplicate) {
-                toast.warn(`${title}: app is already installed!`, {
+                return toast.warn(`${title}: app is already installed!`, {
                     position: "top-center",
                     autoClose: 3000,
                     theme: "light",
                     transition: Bounce,
                 })
-                setIsClick(true)
-                return
-            } else {
+            }
+            else {
                 toast.success(`${title}: app is install!`, {
                     position: "top-center",
                     autoClose: 5000,
@@ -56,6 +54,7 @@ const AppDetails = () => {
         } else {
             updateData.push(appDetails)
         }
+
         localStorage.setItem('install', JSON.stringify(updateData))
         setIsClick(true)
     }

@@ -8,11 +8,16 @@ import Spinner from "../Components/Spinner";
 
 const Apps = () => {
     const [search, setSearch] = useState('')
-    const { apps, } = useApps()
+    const { apps, loading } = useApps()
     const term = search.trim().toLowerCase()
     const searchApps = term
         ? apps.filter(product => product.title.toLowerCase().includes(term))
         : apps
+    const handleSearch = (e) => {
+
+        setSearch(e.target.value)
+    }
+    if (loading) return <Spinner />
 
     return (
         <Container>
@@ -23,7 +28,7 @@ const Apps = () => {
                     <p className="font-semibold md:text-xl lg:text-2xl">({searchApps.length}) Apps Found</p>
                     <label className="input">
                         <Search className="h-4 gray" />
-                        <input onChange={(e) => setSearch(e.target.value)}
+                        <input onChange={(e) => handleSearch(e)}
                             type="search"
                             required
                             placeholder="Search"
@@ -33,7 +38,7 @@ const Apps = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-3 lg:mx-auto">
                     {
                         (searchApps.length) ? searchApps.map(app => <AppsCard key={app.id} app={app} />)
-                            : <ErrorSearch />
+                            : loading ? <Spinner /> : <ErrorSearch />
                     }
                 </div>
             </div>

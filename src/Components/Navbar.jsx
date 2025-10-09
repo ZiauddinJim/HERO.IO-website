@@ -11,11 +11,13 @@ const Navbar = () => {
         { id: 2, path: '/apps', name: 'Apps' },
         { id: 3, path: '/installation', name: 'Installation' }
     ]
-    const links = navbarData.map(route => <li key={route.id}><NavLink to={route.path} className={({ isActive }) => `btn btn-ghost font-normal ${isActive && 'gradient bg-clip-text text-transparent'}`}>{route.name}</NavLink></li>)
+    const links = navbarData.map(route => <li key={route.id}><NavLink to={route.path}
+        className={({ isActive }) => `btn btn-ghost font-normal 
+        ${isActive && 'gradient bg-clip-text text-transparent'}`}>{route.name}</NavLink></li>)
     return (
         <div className='shadow-sm'>
             <Container>
-                <div className="navbar p-0">
+                <div className="navbar p-0 mr-3 lg:mx-auto">
                     <div className="navbar-start">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

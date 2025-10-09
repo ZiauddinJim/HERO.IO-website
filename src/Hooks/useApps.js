@@ -12,7 +12,11 @@ const useApps = () => {
       .get("../appsData.json")
       .then((res) => setApps(res.data))
       .catch((err) => setError(err))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      });
   }, []);
   return { apps, loading, error };
 };

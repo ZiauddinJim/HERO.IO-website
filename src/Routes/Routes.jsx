@@ -5,7 +5,6 @@ import Installation from "../Pages/Installation";
 import Home from "../Pages/Home";
 import AppDetails from "../Pages/AppDetails";
 import Error404 from "../Pages/Error404";
-import AppError from "../Pages/AppError";
 import Spinner from "../Components/Spinner";
 
 
@@ -13,7 +12,7 @@ const Routes = createBrowserRouter([
     {
         path: "/",
         Component: mainLayouts,
-        hydrateFallbackElement: <Spinner />,
+        HydrateFallback: <Spinner />,
         children: [
             {
                 index: true,
@@ -23,6 +22,7 @@ const Routes = createBrowserRouter([
             {
                 path: 'apps',
                 Component: Apps,
+                hydrateFallbackElement: <Spinner />,
 
             },
             {
