@@ -8,7 +8,6 @@ import Spinner from "../Components/Spinner";
 
 const Apps = () => {
     const [search, setSearch] = useState('')
-    // const term = search.trim().toLowerCase()
     const [term, setTerm] = useState('')
     const { apps, loading, setLoading } = useApps()
 
@@ -29,15 +28,6 @@ const Apps = () => {
         ? apps.filter(product => product.title.toLowerCase().includes(term))
         : apps;
 
-    // const handleSearch = (e) => {
-    //     setLoading(true)
-    //     setSearch(e.target.value)
-    //     setTimeout(() => {
-    //         setLoading(false);
-    //     }, 500);
-    // }
-
-    // if (loading) return <Spinner />
 
     return (
         <Container>
