@@ -7,14 +7,15 @@ import Charts from "../Components/Charts";
 import Spinner from "../Components/Spinner";
 import AppError from "./AppError";
 import { useState } from "react";
+import { Bounce, toast } from "react-toastify";
 
 
 const AppDetails = () => {
     const { id } = useParams()
     const { apps, loading } = useApps()
     const [isClick, setIsClick] = useState(false)
-    const appDetails = apps.find(app => app.id === Number(id))
     if (loading) return <Spinner />
+    const appDetails = apps.find(app => app.id === Number(id))
     if (!appDetails) { return <AppError /> }
     const { image, title, companyName, downloads, ratingAvg, reviews, size, ratings, description, } = appDetails
     const dataDetails = [
@@ -24,11 +25,33 @@ const AppDetails = () => {
     ]
 
     const handleInstall = () => {
+
         const exitingData = JSON.parse(localStorage.getItem('install'))
         let updateData = []
         if (exitingData) {
             const isDuplicate = exitingData.some(s => s.id === appDetails.id)
-            if (isDuplicate) return alert('Not')
+            if (isDuplicate) {
+                toast.warn(`${title}: app is already installed!`, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    theme: "light",
+                    transition: Bounce,
+                })
+                setIsClick(true)
+                return
+            } else {
+                toast.success(`${title}: app is install!`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                })
+            }
             updateData = [...exitingData, appDetails]
         } else {
             updateData.push(appDetails)

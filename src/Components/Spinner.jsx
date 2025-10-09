@@ -4,9 +4,9 @@ import assets from "../assets/assets";
 
 const Spinner = () => {
     return (
-        <div className="flex justify-center items-center my-20">
-            <PropagateLoader />
-            <img src={assets.logo} alt="" />
+        <div className="flex flex-col justify-center items-center my-20">
+            <PropagateLoader color="#632ee3" />
+            <img src={assets.logo} alt="" className="h-30 w-30 mx-auto opacity-70 mt-10" />
         </div>
     );
 };

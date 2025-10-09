@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
 body {
     font-family: "Inter", sans-serif;
 }
@@ -16,4 +17,8 @@ body {
 
 .bg-green {
     @apply bg-[#00D390]
+}
+
+.state-cards {
+    @apply stat place-items-center rounded-lg hover:scale-105 transition hover:animate-pulse shadow-lg
 }

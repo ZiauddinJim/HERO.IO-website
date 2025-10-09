@@ -4,10 +4,11 @@ import Container from "../Components/Container";
 import useApps from "../Hooks/useApps";
 import { useState } from "react";
 import ErrorSearch from "./ErrorSearch";
+import Spinner from "../Components/Spinner";
 
 const Apps = () => {
-    const { apps } = useApps()
     const [search, setSearch] = useState('')
+    const { apps, } = useApps()
     const term = search.trim().toLowerCase()
     const searchApps = term
         ? apps.filter(product => product.title.toLowerCase().includes(term))

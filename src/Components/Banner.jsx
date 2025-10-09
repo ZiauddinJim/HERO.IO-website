@@ -1,6 +1,7 @@
 import playStore from '/playStore.png'
 import appStore from '/appStore.png'
 import assets from '../assets/assets';
+import Container from './Container';
 const Banner = () => {
     return (
         <div>
@@ -25,24 +26,26 @@ const Banner = () => {
                 <div><img src={assets.hero} alt="" /></div>
             </div>
             <div className='gradient text-white w-full py-20 px-3 mx-auto text-center'>
-                <h1 className='font-bold lg:text-5xl text-3xl mb-10'>Trusted by Millions, Built for You</h1>
-                <div className='flex flex-col lg:flex-row gap-10 lg:gap-25 justify-center'>
-                    <div className='text-gray-300'>
-                        <p>Total Downloads</p>
-                        <p className='font-extrabold lg:text-6xl text-4xl text-white p-2'>29.6M</p>
-                        <p>12% More Than Last Month</p>
+                <Container>
+                    <h1 className='font-bold lg:text-5xl text-3xl mb-10'>Trusted by Millions, Built for You</h1>
+                    <div className='flex flex-col lg:flex-row gap-10 lg:gap-25 justify-center'>
+                        <div className='state-cards bg-[#632ee3]'>
+                            <p className="stat-title text-slate-200">Total Downloads</p>
+                            <p className="stat-value">29.6M</p>
+                            <p className="stat-desc text-slate-200">12% More Than Last Month</p>
+                        </div>
+                        <div className='state-cards bg-[#7b45e8]'>
+                            <p className="stat-title text-slate-200">Total Downloads</p>
+                            <p className="stat-value">29.6M</p>
+                            <p className="stat-desc text-slate-200">12% More Than Last Month</p>
+                        </div>
+                        <div className='state-cards bg-[#9f62f2]'>
+                            <p className="stat-title text-slate-200">Total Downloads</p>
+                            <p className="stat-value">29.6M</p>
+                            <p className="stat-desc text-slate-200">12% More Than Last Month</p>
+                        </div>
                     </div>
-                    <div className='text-gray-300'>
-                        <p>Total Downloads</p>
-                        <p className='font-extrabold lg:text-6xl text-4xl text-white p-2'>29.6M</p>
-                        <p>12% More Than Last Month</p>
-                    </div>
-                    <div className='text-gray-300'>
-                        <p>Total Downloads</p>
-                        <p className='font-extrabold lg:text-6xl text-4xl text-white p-2'>29.6M</p>
-                        <p>12% More Than Last Month</p>
-                    </div>
-                </div>
+                </Container>
             </div>
         </div>
 

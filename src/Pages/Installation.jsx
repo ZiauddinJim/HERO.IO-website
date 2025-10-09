@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Container from "../Components/Container";
 import InstallationCard from "../Components/InstallationCard";
 import ErrorInstall from "./ErrorInstall";
+import { Bounce, toast } from "react-toastify";
 
 const Installation = () => {
     const [installation, setInstallation] = useState([])
@@ -19,14 +20,25 @@ const Installation = () => {
         let updateData = removeData.filter(p => p.id !== id)
         setInstallation(updateData)
         localStorage.setItem('install', JSON.stringify(updateData))
+        toast.success(`App is Uninstall!`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        })
     }
 
     const sortItem = (() => {
         if (sort === ('price-asc')) {
-            return [...installation].sort((a, b) => a.size - b.size)
+            return [...installation].sort((a, b) => a.downloads - b.downloads)
         }
         else if (sort === ('price-desc')) {
-            return [...installation].sort((a, b) => b.size - a.size)
+            return [...installation].sort((a, b) => b.downloads - a.downloads)
         } else return installation;
     })();
     return (
@@ -41,7 +53,7 @@ const Installation = () => {
 
                     <label className="from-control w-full max-w-xs">
                         <select className="select" value={sort} onChange={e => setSort(e.target.value)}>
-                            <option value='none'>Sort by Size</option>
+                            <option value='none'>Sort by Download</option>
                             <option value='price-asc'>Low-High</option>
                             <option value='price-desc'>High-Low</option>
                         </select>

@@ -3,9 +3,10 @@ import AppsCard from '../Components/AppsCard';
 import Banner from '../Components/Banner';
 import Container from '../Components/Container';
 import useApps from '../Hooks/useApps';
+import Spinner from '../Components/Spinner';
 
 const Home = () => {
-    const { apps, } = useApps()
+    const { apps, loading } = useApps()
     const homeApps = apps.slice(0, 8)
     return (
         <div>
@@ -16,7 +17,10 @@ const Home = () => {
                     <p className="gray my-5">Explore All Trending Apps on the Market developed by us</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-3 lg:mx-auto">
                         {
-                            homeApps.map(app => <AppsCard key={app.id} app={app} />)
+                            homeApps.map(app => {
+                                if (loading) return <Spinner />
+                                return <AppsCard key={app.id} app={app} />
+                            })
                         }
                     </div>
                     <Link to={'apps'} className="btn gradient text-white  mt-10 px-5">Show All</Link>

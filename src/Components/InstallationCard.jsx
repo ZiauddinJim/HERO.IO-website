@@ -1,4 +1,5 @@
 import assets from '../assets/assets';
+import { formatter } from '../Util/Util';
 
 const InstallationCard = ({ installation, handleRemove }) => {
 
@@ -13,9 +14,9 @@ const InstallationCard = ({ installation, handleRemove }) => {
                                 <img src={image} alt="" className="w-20 h-20 rounded-lg" />
                                 <div>
                                     <p className="text-xl font-medium mb-2">{title}</p>
-                                    <div className="flex justify-start items-center gap-2">
-                                        <div className='text-green-500 rounded flex gap-2 justify-center items-center'>
-                                            <img className="h-3 w-3" src={assets.downloadIcon} alt="Download Icon" />{downloads} </div>
+                                    <div className="flex justify-start items-center gap-3">
+                                        <div className='text-green-500 rounded flex gap-1 justify-center items-center'>
+                                            <img className="h-3 w-3" src={assets.downloadIcon} alt="Download Icon" />{formatter.format(downloads)} </div>
                                         <div className='text-orange-500 rounded flex gap-2 justify-center items-center'>
                                             <img className="h-3 w-3" src={assets.ratingIcon} alt="Download Icon" /> {ratingAvg} </div>
                                         <div className="text-sm">{size} MB</div>
