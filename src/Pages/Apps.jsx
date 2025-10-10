@@ -3,7 +3,7 @@ import AppsCard from "../Components/AppsCard";
 import Container from "../Components/Container";
 import useApps from "../Hooks/useApps";
 import { useEffect, useState } from "react";
-import ErrorSearch from "./ErrorSearch";
+import ErrorSearch from "../Error/ErrorSearch";
 import Spinner from "../Components/Spinner";
 
 const Apps = () => {

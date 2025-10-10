@@ -5,8 +5,8 @@ import assets from "../assets/assets";
 import { formatter } from "../Util/Util";
 import Charts from "../Components/Charts";
 import Spinner from "../Components/Spinner";
-import AppError from "./AppError";
-import { useState } from "react";
+import AppError from "../Error/AppError";
+import { useEffect, useState } from "react";
 import { Bounce, toast } from "react-toastify";
 
 
@@ -14,15 +14,29 @@ const AppDetails = () => {
     const { id } = useParams()
     const { apps, loading } = useApps()
     const [isClick, setIsClick] = useState(false)
-    if (loading) return <Spinner />
+
     const appDetails = apps.find(app => app.id === Number(id))
+
+    useEffect(() => {
+        if (!appDetails) return;
+        const installedApps = JSON.parse(localStorage.getItem('install')) || []
+        const alreadyInstalled = installedApps.some(app => app.id === appDetails.id)
+        setIsClick(alreadyInstalled)
+    }, [appDetails])
+
+    if (loading) return <Spinner />
+
     if (!appDetails) { return <AppError /> }
+
     const { image, title, companyName, downloads, ratingAvg, reviews, size, ratings, description, } = appDetails
+
     const dataDetails = [
         { id: 1, image: assets.downloadIcon, digit: formatter.format(downloads) },
         { id: 2, image: assets.ratingIcon, digit: ratingAvg },
         { id: 3, image: assets.reviewIcon, digit: formatter.format(reviews) },
     ]
+
+
 
     const handleInstall = () => {
         const exitingData = JSON.parse(localStorage.getItem('install'))
@@ -78,7 +92,7 @@ const AppDetails = () => {
                                 )
                             })}
                         </div>
-                        <div onClick={handleInstall}
+                        <div onClick={!isClick ? handleInstall : undefined}
                             className={`btn mt-5 bg-green text-white ${isClick ? '' : 'animate-pulse'}`}>
                             {isClick ? 'Installed' : `Install Now (${size} MB)`}
                         </div>

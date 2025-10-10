@@ -4,7 +4,7 @@ import Apps from "../Pages/Apps";
 import Installation from "../Pages/Installation";
 import Home from "../Pages/Home";
 import AppDetails from "../Pages/AppDetails";
-import Error404 from "../Pages/Error404";
+import Error404 from "../Error/Error404";
 import Spinner from "../Components/Spinner";
 
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Container from "../Components/Container";
 import InstallationCard from "../Components/InstallationCard";
-import ErrorInstall from "./ErrorInstall";
+import ErrorInstall from "../Error/ErrorInstall";
 import { Bounce, toast } from "react-toastify";
 
 const Installation = () => {

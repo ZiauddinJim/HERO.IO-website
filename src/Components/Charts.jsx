@@ -2,8 +2,6 @@ import React from 'react';
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 const Charts = ({ ratings }) => {
-    // console.log(ratings);
-
 
     return (
         <div className='mt-10 mb-5 mx-3 lg:mx-auto'>
