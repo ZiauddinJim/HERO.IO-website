@@ -3,16 +3,22 @@ import Container from "../Components/Container";
 import InstallationCard from "../Components/InstallationCard";
 import ErrorInstall from "../Error/ErrorInstall";
 import { Bounce, toast } from "react-toastify";
+import Spinner from "../Components/Spinner";
 
 const Installation = () => {
     const [installation, setInstallation] = useState([])
     const [sort, setSort] = useState([])
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         const saveData = JSON.parse(localStorage.getItem('install'))
         saveData && setInstallation(saveData)
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
     }, [])
-
+    if (loading) return <Spinner />
     if (!installation.length) return <ErrorInstall />
 
     const handleRemove = (id) => {
