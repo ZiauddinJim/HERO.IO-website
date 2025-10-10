@@ -7,7 +7,6 @@ import Charts from "../Components/Charts";
 import Spinner from "../Components/Spinner";
 import AppError from "../Error/AppError";
 import { useEffect, useState } from "react";
-import { Bounce, toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 
@@ -37,43 +36,17 @@ const AppDetails = () => {
         { id: 3, image: assets.reviewIcon, digit: formatter.format(reviews) },
     ]
 
-
-
     const handleInstall = () => {
-        const exitingData = JSON.parse(localStorage.getItem('install'))
-        let updateData = []
-        if (exitingData) {
-            // const isDuplicate = exitingData.some(s => s.id === appDetails.id)
-            // if (isDuplicate) {
-            //     return toast.warn(`${title}: app is already installed!`, {
-            //         position: "top-center",
-            //         autoClose: 3000,
-            //         theme: "light",
-            //         transition: Bounce,
-            //     })
-            // }
-            // else {
-            //     toast.success(`${title}: app is install!`, {
-            //         position: "top-center",
-            //         autoClose: 5000,
-            //         hideProgressBar: false,
-            //         closeOnClick: false,
-            //         pauseOnHover: true,
-            //         draggable: true,
-            //         progress: undefined,
-            //         theme: "light",
-            //         transition: Bounce,
-            //     })
-            // }
-            Swal.fire({
-                title: "Good job!",
-                text: `${title}: app is install!`,
-                icon: "success"
-            });
-            updateData = [...exitingData, appDetails]
-        } else {
-            updateData.push(appDetails)
-        }
+        const exitingData = JSON.parse(localStorage.getItem('install')) || []
+
+        const isDuplicate = exitingData.some(s => s.id === appDetails.id)
+        if (isDuplicate) return;
+        Swal.fire({
+            title: "Good job!",
+            text: `${title}: app is install!`,
+            icon: "success"
+        });
+        const updateData = [...exitingData, appDetails]
         localStorage.setItem('install', JSON.stringify(updateData))
         setIsClick(true)
     }
@@ -97,10 +70,11 @@ const AppDetails = () => {
                                 )
                             })}
                         </div>
-                        <div onClick={!isClick ? handleInstall : undefined}
-                            className={`btn mt-5 bg-green text-white ${isClick ? '' : 'animate-pulse'}`}>
+                        <button disabled={isClick}
+                            onClick={() => { !isClick ? handleInstall() : undefined }}
+                            className={`btn mt-5 bg-green text-white ${isClick ? 'opacity-50 cursor-not-allowed' : 'animate-pulse'}`}>
                             {isClick ? 'Installed' : `Install Now (${size} MB)`}
-                        </div>
+                        </button>
                     </div>
                 </div>
                 <Charts ratings={ratings} />

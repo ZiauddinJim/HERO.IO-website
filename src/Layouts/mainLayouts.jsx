@@ -1,7 +1,6 @@
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import { Outlet } from 'react-router';
-import Container from '../Components/Container';
 import { ToastContainer } from 'react-toastify';
 
 const mainLayouts = () => {
