@@ -8,6 +8,7 @@ import Spinner from "../Components/Spinner";
 import AppError from "../Error/AppError";
 import { useEffect, useState } from "react";
 import { Bounce, toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 
 const AppDetails = () => {
@@ -42,33 +43,37 @@ const AppDetails = () => {
         const exitingData = JSON.parse(localStorage.getItem('install'))
         let updateData = []
         if (exitingData) {
-            const isDuplicate = exitingData.some(s => s.id === appDetails.id)
-            if (isDuplicate) {
-                return toast.warn(`${title}: app is already installed!`, {
-                    position: "top-center",
-                    autoClose: 3000,
-                    theme: "light",
-                    transition: Bounce,
-                })
-            }
-            else {
-                toast.success(`${title}: app is install!`, {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    transition: Bounce,
-                })
-            }
+            // const isDuplicate = exitingData.some(s => s.id === appDetails.id)
+            // if (isDuplicate) {
+            //     return toast.warn(`${title}: app is already installed!`, {
+            //         position: "top-center",
+            //         autoClose: 3000,
+            //         theme: "light",
+            //         transition: Bounce,
+            //     })
+            // }
+            // else {
+            //     toast.success(`${title}: app is install!`, {
+            //         position: "top-center",
+            //         autoClose: 5000,
+            //         hideProgressBar: false,
+            //         closeOnClick: false,
+            //         pauseOnHover: true,
+            //         draggable: true,
+            //         progress: undefined,
+            //         theme: "light",
+            //         transition: Bounce,
+            //     })
+            // }
+            Swal.fire({
+                title: "Good job!",
+                text: `${title}: app is install!`,
+                icon: "success"
+            });
             updateData = [...exitingData, appDetails]
         } else {
             updateData.push(appDetails)
         }
-
         localStorage.setItem('install', JSON.stringify(updateData))
         setIsClick(true)
     }
