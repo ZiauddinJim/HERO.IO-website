@@ -1,5 +1,7 @@
 # HERO.IO
 
+**Live Site URL:** [HERO.IO](https://hero-io-sz.pages.dev/)
+
 HERO.IO is a modern web platform that displays **Play Store** and **App Store** app details — including app information, analytics, and installation links — in a clean, responsive, and visually appealing interface.
 
 Built with **React**, **TailwindCSS**, and modern UI libraries for a seamless and dynamic experience.
